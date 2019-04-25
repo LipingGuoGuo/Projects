@@ -25,36 +25,36 @@ def getHtml(url):
 # 通过正则表达式获取该网页下每本书的title（换行符没去掉）
 def getTitle(html):
     nameList = re.findall(r'<a href="https.*?".*?target="_blank">(.*?)</a>',html,re.S)
-    newNameList = [];
+    newNameList = []
     global topnum
     for index,item in enumerate(nameList):
-        if item.find("img") == -1:#通过检测img,只保留中文标题
-            #item.replace('\n','')
-            #item.strip()
-            #item.splitlines()
-            #re.sub('\r|\n', '', item)
-            if topnum%26 !=0:
-                #newNameList.append("Top " + str(topnum) + " " + item);
-                newNameList.append(item);
-            topnum += 1;
+        if item.find("img") == -1:  # 通过检测img,只保留中文标题
+            # item.replace('\n','')
+            # item.strip()
+            # item.splitlines()
+            # re.sub('\r|\n', '', item)
+            if topnum % 26 != 0:
+                # newNameList.append("Top " + str(topnum) + " " + item);
+                newNameList.append(item)
+            topnum += 1
     return newNameList
 
-#通过点击图片链接进入每本书的详情页
+# 通过点击图片链接进入每本书的详情页
 def getDetail(html):
     detailList = re.findall(r'<a href="(https.*?)".*?target="_blank">.*?</a>',html,re.S)
     newDetailList = []
     for index,item in enumerate(detailList):
-        if item.find("subject") != -1 and index % 2!=0:
-            newDetailList.append(item);
-            #print(item)
-            #html_detail=getHtml(item).decode("UTF-8")
-            #print(getIntroduction(html_detail))
-            #newIntroductionList.append(getIntroduction(html_detail))
-            #time.sleep(random.randint(2,5))
+        if item.find("subject") != -1 and index % 2 != 0:
+            newDetailList.append(item)
+            # print(item)
+            # html_detail=getHtml(item).decode("UTF-8")
+            # print(getIntroduction(html_detail))
+            # newIntroductionList.append(getIntroduction(html_detail))
+            # time.sleep(random.randint(2,5))
 
     return newDetailList
 
-#获取每本书的出版年份
+# 获取每本书的出版年份
 def getPublishYear(html):
     publishYearList = re.findall(r'<span class="pl">出版年.*?</span>(.*?)<br/>',html,re.S)
     return publishYearList
