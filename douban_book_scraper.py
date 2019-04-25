@@ -59,17 +59,17 @@ def getPublishYear(html):
     publishYearList = re.findall(r'<span class="pl">出版年.*?</span>(.*?)<br/>',html,re.S)
     return publishYearList
 
-#获取每本书的出版社
+# 获取每本书的出版社
 def getPress(html):
     pressList = re.findall(r'<span class="pl">出版社.*?</span>(.*?)<br/>',html,re.S)
     return pressList
 
-#获取每本书的ISBN编码
+# 获取每本书的ISBN编码
 def getIsbn(html):
     isbnList = re.findall(r'<span class="pl">ISBN.*?</span>(.*?)<br/>',html,re.S)
     return isbnList
 
-#通过正则表达式获取该网页下每本书的图片链接
+# 通过正则表达式获取该网页下每本书的图片链接
 def getImg(html):
     imgList = re.findall(r'img.*?width=.*?src="(http.*?)"',html,re.S)
     newImgList = []
@@ -79,12 +79,12 @@ def getImg(html):
 
     return newImgList;
 
-#通过正则表达式获取该网页下每本书的评分
+# 通过正则表达式获取该网页下每本书的评分
 def getScore(html):
     scoreList = re.findall(r'<span.*?class="rating_nums">(.*?)</span>',html,re.S)
     return scoreList
 
-#通过正则表达式获取该网页下每本书的评价总数
+# 通过正则表达式获取该网页下每本书的评价总数
 def getComment(html):
     commentList = re.findall(r'<span>(.*?)</span>',html,re.S)
     newcommentList =[]
