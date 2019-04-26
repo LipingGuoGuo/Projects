@@ -75,9 +75,9 @@ def getImg(html):
     newImgList = []
     for index,item in enumerate(imgList):
         if item.find("js") == -1 and item.find("css") == -1 and item.find("dale") == -1 and item.find("icon") == -1 and item.find("png") == -1:
-            newImgList.append(item);
+            newImgList.append(item)
 
-    return newImgList;
+    return newImgList
 
 # 通过正则表达式获取该网页下每本书的评分
 def getScore(html):
@@ -90,19 +90,19 @@ def getComment(html):
     newcommentList =[]
     for index,item in enumerate(commentList):
         if item.find("评价") >= 1:
-            newcommentList.append(item);
+            newcommentList.append(item)
 
     return newcommentList
 
 #将获取的信息进行保存
 def saveInfo(infoList):
     with open('D:/book_scraper.csv','w+',newline='',encoding='gb18030') as fp:
-        a = csv.writer(fp,delimiter = ',')#delimiter的意思是插入到csv文件中的一行记录以它分隔开
+        a = csv.writer(fp,delimiter = ',') # delimiter的意思是插入到csv文件中的一行记录以它分隔开
         a.writerow(['书  名','评  分','评价人数','图片链接','出 版社','出版年份',' ISBN '])
         a.writerows(infoList)
         print('保存完毕')
 
-#初始化
+# 初始化
 namesUrl = []
 imgsUrl = []
 scoresUrl = []
@@ -114,15 +114,15 @@ publishYearsUrl = []
 newPresssUrl = []
 allInfo = []
 
-print ("Starting Main \n 普通爬取开始时时间")
+print("Starting Main \n 普通爬取开始时时间")
 print(time.ctime(time.time()))
 
-#实现翻页,每页25个
+# 实现翻页,每页25个
 for page in range(0,450,25):
     url = "https://www.douban.com/doulist/1264675/?start={}".format(page)
-    html = getHtml(url).decode("UTF-8");
+    html = getHtml(url).decode("UTF-8")
     if html == '':
-        namesUrl.extend('none');
+        namesUrl.extend('none')
         imgsUrl.extend('none')
         scoresUrl.extend('none')
         commentsUrl.extend('none')
@@ -135,18 +135,18 @@ for page in range(0,450,25):
         introductionsUrl.extend(getDetail(html))
 
 
-namesUrl.pop()#删除最后一个无用元素
+namesUrl.pop() # 删除最后一个无用元素
 
-#进入书的详情页，获取出版社、isbn等信息
+# 进入书的详情页，获取出版社、isbn等信息
 for index,item in enumerate(introductionsUrl):
     print(item)
-    if getHtml(item) == '':#排除链接不存在的情况
+    if getHtml(item) == '':  # 排除链接不存在的情况
         newPresssUrl.append("该链接不存在")
         publishYearsUrl.append("该链接不存在")
         isbnsUrl.append("该链接不存在")
     else:
-        html_detail=getHtml(item).decode("UTF-8")
-        #print(getIntroduction(html_detail))
+        html_detail = getHtml(item).decode("UTF-8")
+        # print(getIntroduction(html_detail))
         newPresssUrl.append(getPress(html_detail))
         publishYearsUrl.append(getPublishYear(html_detail))
         isbnsUrl.append(getIsbn(html_detail))
@@ -173,5 +173,5 @@ print(len(publishYearsUrl))
 print(len(isbnsUrl))
 
 saveInfo(allInfo)
-print ("Exiting Main \n 普通爬取结束时时间")
+print("Exiting Main \n 普通爬取结束时时间")
 print(time.ctime(time.time()))
