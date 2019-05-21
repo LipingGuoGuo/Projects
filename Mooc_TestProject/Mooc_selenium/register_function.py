@@ -3,7 +3,7 @@
 
 """
 import sys
-sys.path.append("工程目录")
+sys.path.append("F:\\Projects\\Projects\\Mooc_TestProject")
 from selenium import webdriver
 import time
 import random
