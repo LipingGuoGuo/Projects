@@ -16,14 +16,16 @@ print(EC.title_contains("注册"))
 email_element = driver.find_element_by_id("register_email")
 driver.save_screenshot("F:/imooc.png")
 code_element = driver.find_element_by_id("getcode_num")
-print("code_element.location")  # {"x": 123, "y":345}
+print(code_element.location)
 left = code_element.location['x']
 top = code_element.location['y']
 right = code_element.size['width'] + left
-height = code_element.size['height'] + top
+bottom = code_element.size['height'] + top
 im = Image.open("F:/imooc.png")
-img = im.crop((left,top,right,height))
+print(left,top,right,bottom)
+img = im.crop((left, top, right, bottom))
 img.save("F:/imooc1.png")
+driver.close()
 
 # for i in range(5):
 #     user_email = ''.join(random.sample("1234567890abcdefg", 5)) + '@163.com'
@@ -42,11 +44,11 @@ EC.visibility_of_element_located(element) 判断传入的元素是否可见
 输入注册用户名及获取用户信息
 get_attribute()获取用户属性
 '''
-email_element = driver.find_element_by_id("register_email")
-print(email_element.get_attribute("placeholder"))
-email_element.send_keys("test123@163.com")
-# print(email_element.get_attribute("value"))
-driver.close()
+# email_element = driver.find_element_by_id("register_email")
+# print(email_element.get_attribute("placeholder"))
+# email_element.send_keys("test123@163.com")
+# # print(email_element.get_attribute("value"))
+# driver.close()
 
 # driver.find_element_by_id("register_email").send_keys("glp123@163.com")
 # # 子父节点定位  find_elements_by_class_name
