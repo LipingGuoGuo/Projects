@@ -11,7 +11,10 @@ import time
 class FirstCase(unittest.TestCase):
     @classmethod
 
-    def setUp(self):
+    def setUpClass(cls):
+        cls.log = UserLog()
+        cls.logger = cls.log.get_log()
+        file_name = "F:/Projects/Projects/Mooc_TestProject/Image/test001.png"
         driver = webdriver.Chrome()
         driver.get("http://www.5itest.cn/register")
         self.login = RegisterBusiness(driver)
@@ -33,33 +36,33 @@ class FirstCase(unittest.TestCase):
 
     # 邮箱，用户名，密码，验证码，错误信息定位元素，错误提示信息
     def test_login_email_error(self):
-        email_error = self.login.login_email_error("34", "111")
+        email_error = self.login.login_email_error("34", "111", "SS111", self.file_name)
         return self.assertFalse(email_error, "测试失败")
         # if email_error == True:
         #     print("注册成功，此条case执行失败")
         # 通过assert判断是否为error
 
     def test_login_username_error(self):
-        username_error = self.login.login_name_error("34@qq.com", "111")
+        username_error = self.login.login_name_error("34@qq.com", "111", "SS111", self.file_name)
         self.assertFalse(username_error, "测试失败")
         # if username_error == True:
         #     print("注册成功，此条case执行失败")
 
     def test_login_password_error(self):
-        password_error = self.login.login_password_error("34", "111")
+        password_error = self.login.login_password_error("34", "111", "SS111", self.file_name)
         self.assertFalse(password_error, "测试失败")
         # if password_error == True:
         #     print("注册成功，此条case执行失败")
 
     def test_login_code_error(self):
-        code_error = self.login.login_code_error("34", "111")
+        code_error = self.login.login_code_error("34", "111", "SS111", self.file_name)
         self.assertFalse(code_error, "测试失败")
         # if code_error == True:
         #     print("注册成功，此条case执行失败")
 
 
     def test_login_success(self):
-        success = self.login.user_base("34", "111")
+        success = self.login.user_base("34", "111", "SS111", self.file_name)
         self.assertFalse(success)
         # if self.login.register_success() == True:
         #     print("注册成功")

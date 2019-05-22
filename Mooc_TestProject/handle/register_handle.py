@@ -1,8 +1,9 @@
-
 from page.register_page import RegisterPage
+from util.get_code import GetCode
 class LoginHandle(object):
     def __init__(self):
-        self.register_p = RegisterPage
+        self.driver = driver
+        self.register_p = RegisterPage(self.driver)
     # 输入邮箱
     def send_user_email(self, email):
         # email_element 获取的是页面邮箱元素
@@ -17,7 +18,9 @@ class LoginHandle(object):
         self.register_p.get_password_element().send_keys(password)
 
     # 输入验证码
-    def send_user_code(self, code):
+    def send_user_code(self, filename):
+        get_code_text = GetCode(self, driver)
+        code = get_code_text.code_online(filename)
         self.register_p.get_code_element().send_keys(code)
 
     # 获取文字信息
