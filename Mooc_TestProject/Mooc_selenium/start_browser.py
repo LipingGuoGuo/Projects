@@ -39,7 +39,7 @@ img.save("F:/imooc1.png")
 '''
 使用Excepted_conditions判断元素是否可见
 element = driver.find_element_by_class_name("controls")
-EC.visibility_of_element_located(element) 判断传入的元素是否可见
+EC.visibility_of_element_located(ele   ment) 判断传入的元素是否可见
 '''
 # WebDriverWait(driver, 1).until(EC.visibility_of_element_located(locator))
 '''
