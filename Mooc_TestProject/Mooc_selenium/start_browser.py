@@ -13,16 +13,20 @@ driver.maximize_window()
 time.sleep(5)
 # 使用title_contains检查页面是否正确
 print(EC.title_contains("注册"))
-email_element = driver.find_element_by_id("register_email")
+# email_element = driver.find_element_by_xpath("//*[@id='getcode_num']")
 driver.save_screenshot("F:/imooc.png")
-code_element = driver.find_element_by_id("getcode_num")
-print("code_element.location")  # {"x": 123, "y":345}
+target = driver.find_element_by_id("getcode_num")
+driver.execute_script("arguments[0].scrollIntoView();", target) # 拖动到可见的元素去
+
+code_element = driver.find_element_by_xpath("//*[@id='getcode_num']")
+# print(code_element.location)
 left = code_element.location['x']
 top = code_element.location['y']
 right = code_element.size['width'] + left
 height = code_element.size['height'] + top
 im = Image.open("F:/imooc.png")
 img = im.crop((left,top,right,height))
+print(left,top,right,height)
 img.save("F:/imooc1.png")
 
 # for i in range(5):
