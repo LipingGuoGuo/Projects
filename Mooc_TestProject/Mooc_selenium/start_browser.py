@@ -15,7 +15,7 @@ driver.maximize_window()
 time.sleep(5)
 # 使用title_contains检查页面是否正确
 print(EC.title_contains("注册"))
-email_element = driver.find_element_by_id("register_email]")
+# email_element = driver.find_element_by_id("register_email]")
 driver.save_screenshot("F:/imooc.png")
 target = driver.find_element_by_id("getcode_num")
 driver.execute_script("arguments[0].scrollIntoView();", target)  # 拖动到可见的元素去

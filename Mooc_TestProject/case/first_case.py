@@ -1,6 +1,7 @@
 import sys
 sys.path.append("F:\\Projects\\Projects\\Mooc_TestProject")
 # 引入项目工程路径
+import traceback
 from business.register_business import RegisterBusiness
 from selenium import webdriver
 import unittest

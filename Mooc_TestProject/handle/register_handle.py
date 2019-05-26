@@ -1,7 +1,7 @@
 from page.register_page import RegisterPage
 from util.get_code import GetCode
 class LoginHandle(object):
-    def __init__(self):
+    def __init__(self, driver):
         self.driver = driver
         self.register_p = RegisterPage(self.driver)
     # 输入邮箱
@@ -19,16 +19,16 @@ class LoginHandle(object):
 
     # 输入验证码
     def send_user_code(self, filename):
-        get_code_text = GetCode(self, driver)
+        get_code_text = GetCode(self.driver)
         code = get_code_text.code_online(filename)
         self.register_p.get_code_element().send_keys(code)
 
     # 获取文字信息
     def get_user_text(self, info, user_info):
         try:
-            if info == "email_error":
+            if info == "user_mail_error":
                 text = self.register_p.get_email_error_element().text
-            elif info == "name_error":
+            elif info == "user_name_error":
                 text = self.register_p.get_email_error_element().text
             elif info == "password_error":
                 text = self.register_p.get_password_error_element().text
