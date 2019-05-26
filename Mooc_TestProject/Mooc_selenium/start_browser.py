@@ -1,7 +1,7 @@
 # coding=utf-8
 from selenium import webdriver
 import time
-import random
+# import random
 from PIL import Image
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
