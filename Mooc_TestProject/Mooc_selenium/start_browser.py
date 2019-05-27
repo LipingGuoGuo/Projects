@@ -1,12 +1,12 @@
 # coding=utf-8
 from selenium import webdriver
 import time
-# import random
+import random
 from PIL import Image
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
-from ShowapiRequest import ShowapiRequest
+# from ShowapiRequest import ShowapiRequest
 
 driver = webdriver.Chrome()
 
@@ -17,7 +17,7 @@ time.sleep(5)
 print(EC.title_contains("注册"))
 # email_element = driver.find_element_by_id("register_email]")
 driver.save_screenshot("F:/imooc.png")
-target = driver.find_element_by_id("getcode_num")
+target = driver.find_element_by_xpath("//*[@id='getcode_num']")
 driver.execute_script("arguments[0].scrollIntoView();", target)  # 拖动到可见的元素去
 
 code_element = driver.find_element_by_xpath("//*[@id='getcode_num']")
@@ -31,15 +31,15 @@ img = im.crop((left, top, right, height))
 print(left, top, right, height)
 img.save("F:/imooc1.png")
 
-r = ShowapiRequest("http://route.showapi.com/184-4","62626","d61950be50dc4dbd9969f741b8e730f5" )
-r.addBodyPara("typeId", "35")
-r.addBodyPara("convert_to_jpg", "0")
-r.addFilePara("image", r"E:/imooc1.png")  # 文件上传时设置
-res = r.post()
-text = res.json()['showapi_res_body']['Result']
-print(text)  # 返回信息
-driver.find_element_by_id("captcha_code").send_keys(text)
-time.sleep(2)
+# r = ShowapiRequest("http://route.showapi.com/184-4","62626","d61950be50dc4dbd9969f741b8e730f5" )
+# r.addBodyPara("typeId", "35")
+# r.addBodyPara("convert_to_jpg", "0")
+# r.addFilePara("image", r"E:/imooc1.png")  # 文件上传时设置
+# res = r.post()
+# text = res.json()['showapi_res_body']['Result']
+# print(text)  # 返回信息
+# driver.find_element_by_id("captcha_code").send_keys(text)
+# time.sleep(2)
 
 
 # for i in range(5):

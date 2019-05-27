@@ -23,7 +23,7 @@ class ShowapiRequests:
     def addHeadPara(self, key_value):
 
 
-    def setTimeout(self, connecttimeout, readtimeout):
+     def setTimeout(self, connecttimeout, readtimeout):
         timeouts["connecttimeout"] = connecttimeout
         timeouts["readtimeout"] = readtimeout
         return self
@@ -33,7 +33,7 @@ class ShowapiRequests:
         if not timeouts:
             res = requests.get(get_url, headers=headers)
         else:
-            timeouts = (timeouts["connecttimeout"], timeouts["readtimeout"])
+            timeout = (timeouts["connecttimeout"], timeouts["readtimeout"])
             res = requests.get(get_url, headers = headers, timeouts = timeouts)
         return res
 
@@ -41,4 +41,4 @@ class ShowapiRequests:
         if not timeouts:
             res = requests.post(self.url, files = files, data=body, headers = headers)
         else:
-            timeouts = (timeouts["connecttimeout"], timeouts["readtimeout"])
+            timeout = (timeouts["connecttimeout"], timeouts["readtimeout"])
