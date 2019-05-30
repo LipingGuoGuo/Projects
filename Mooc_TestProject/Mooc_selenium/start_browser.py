@@ -36,7 +36,7 @@ r.addBodyPara("img_base64", "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAdwB3AAD/
 r.addBodyPara("typeId", "35")
 r.addBodyPara("convert_to_jpg", "0")
 r.addBodyPara("needMorePrecise", "0")
-r.addFilePara("image", r"F:/test.jpg")  # 文件上传时设置
+r.addFilePara("image", r"F:/imooc1.png")  # 文件上传时设置
 res = r.post()
 text = res.json()["showapi_res_body"]["Result"]
 # print(text)  # 返回信息
@@ -60,17 +60,19 @@ EC.visibility_of_element_located(element) 判断传入的元素是否可见
 输入注册用户名及获取用户信息
 get_attribute()获取用户属性
 '''
-email_element = driver.find_element_by_id("register_email")
-print(email_element.get_attribute("placeholder"))
-email_element.send_keys("test123@163.com")
-# print(email_element.get_attribute("value"))
+# email_element = driver.find_element_by_id("register_email")
+# print(email_element.get_attribute("placeholder"))
+# email_element.send_keys("test123@163.com")
+# # print(email_element.get_attribute("value"))
+# time.sleep(5)
+# driver.close()
+
+driver.find_element_by_id("register_email").send_keys("glp123@163.com")
+# 子父节点定位  find_elements_by_class_name
+user_name_element_node = driver.find_elements_by_class_name("controls")[1]
+user_element = user_name_element_node.find_element_by_class_name("form-control")
+user_element.send_keys("glp123")
+driver.find_element_by_name("password").send_keys("11111111")
+# driver.find_element_by_xpath("//*[@id='captcha_code']").send_keys("1111")
 time.sleep(5)
 driver.close()
-
-# driver.find_element_by_id("register_email").send_keys("glp123@163.com")
-# # 子父节点定位  find_elements_by_class_name
-# user_name_element_node = driver.find_elements_by_class_name("controls")[1]
-# user_element = user_name_element_node.find_element_by_class_name("form-control")
-# user_element.send_keys("glp123")
-# driver.find_element_by_name("password").send_keys("11111111")
-# driver.find_element_by_xpath("//*[@id='captcha_code']").send_keys("1111")

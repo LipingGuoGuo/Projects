@@ -23,7 +23,7 @@ def get_range_user():
 
 # 获取图片
 def get_code_image(file_name):
-    driver.save.screenshot(file_name)
+    driver.save_screenshot(file_name)
     code_element = driver.find_element_by_id("getcode_num")
     print(code_element.location)
     left = code_element.location['x']
