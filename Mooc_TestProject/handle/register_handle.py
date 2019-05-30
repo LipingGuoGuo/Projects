@@ -4,6 +4,7 @@ class LoginHandle(object):
     def __init__(self, driver):
         self.driver = driver
         self.register_p = RegisterPage(self.driver)
+
     # 输入邮箱
     def send_user_email(self, email):
         # email_element 获取的是页面邮箱元素
@@ -26,11 +27,11 @@ class LoginHandle(object):
     # 获取文字信息
     def get_user_text(self, info, user_info):
         try:
-            if info == "user_mail_error":
+            if user_info == "user_mail_error":
                 text = self.register_p.get_email_error_element().text
-            elif info == "user_name_error":
+            elif user_info == "user_name_error":
                 text = self.register_p.get_email_error_element().text
-            elif info == "password_error":
+            elif user_info == "password_error":
                 text = self.register_p.get_password_error_element().text
             else:
                 text = self.register_p.get_code_element().text
