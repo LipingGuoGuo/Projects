@@ -9,7 +9,9 @@ import HTMLTestRunner
 import os
 import time
 class FirstCase(object):
-    def __init__(self, driver):
+    def __init__(self):
+        driver = webdriver.Chrome()
+        driver.get("http://www.5itest.cn/register")
         self.login = RegisterBusiness(driver)
     # 邮箱，用户名，密码，验证码，错误信息定位元素，错误提示信息
     def test_login_email_error(self):
@@ -39,7 +41,7 @@ class FirstCase(object):
         if self.login.register_success() == True:
             print("注册成功")
 
-
+# 实例化
 def main():
     first = FirstCase
     first.test_login_code_error()
@@ -47,6 +49,9 @@ def main():
     first.test_login_password_error()
     first.test_login_username_error()
     first.test_login_success()
+
+if __name__ == "__main__":
+    main()
 
 # class FirstCase(unittest.TestCase):
 #     @classmethod

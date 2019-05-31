@@ -1,5 +1,5 @@
 from page.register_page import RegisterPage
-from util.get_code import GetCode
+# from util.get_code import GetCode
 class LoginHandle(object):
     def __init__(self, driver):
         self.driver = driver
@@ -19,19 +19,19 @@ class LoginHandle(object):
         self.register_p.get_password_element().send_keys(password)
 
     # 输入验证码
-    def send_user_code(self, filename):
-        get_code_text = GetCode(self.driver)
-        code = get_code_text.code_online(filename)
+    def send_user_code(self, code):
+        # get_code_text = GetCode(self.driver)
+        # code = get_code_online(filename)
         self.register_p.get_code_element().send_keys(code)
 
     # 获取文字信息
     def get_user_text(self, info, user_info):
         try:
-            if user_info == "user_mail_error":
+            if info == "user_mail_error":
                 text = self.register_p.get_email_error_element().text
-            elif user_info == "user_name_error":
+            elif info == "user_name_error":
                 text = self.register_p.get_email_error_element().text
-            elif user_info == "password_error":
+            elif info == "password_error":
                 text = self.register_p.get_password_error_element().text
             else:
                 text = self.register_p.get_code_element().text
