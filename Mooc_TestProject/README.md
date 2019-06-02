@@ -28,5 +28,5 @@
 > * 安装HTMLTestRunner 下载地址：http://tungwaiyip.info/software/HTMLTestRunner.html  安装至E:\Python\Lib下
 
 ##### 安装pywin32
-> * 安装pywin32 （爬虫安装需要？）下载地址：https://sourceforge.net/projects/pywin32/files/pywin32/ 安装步骤：pip install pywin32
+> * 安装pywin32 （unnittest框架需要）下载地址：https://sourceforge.net/projects/pywin32/files/pywin32/ 安装步骤：pip install pywin32
 > * pycharm 中下载pywin32包

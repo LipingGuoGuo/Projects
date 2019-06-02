@@ -1,6 +1,6 @@
 from page.register_page import RegisterPage
 # from util.get_code import GetCode
-class LoginHandle(object):
+class RegisterHandle(object):
     def __init__(self, driver):
         self.driver = driver
         self.register_p = RegisterPage(self.driver)

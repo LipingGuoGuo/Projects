@@ -1,20 +1,25 @@
-import sys
-sys.path.append("F:\\Projects\\Projects\\Mooc_TestProject")
+# import sys
+# sys.path.append("F:\\Projects\\Projects\\Mooc_TestProject")
 # 引入项目工程路径
-import traceback
+# import traceback
 from business.register_business import RegisterBusiness
 from selenium import webdriver
 import unittest
-import HTMLTestRunner
-import os
-import time
-class FirstCase(object):
-    def __init__(self):
-        driver = webdriver.Chrome()
-        driver.get("http://www.5itest.cn/register")
-        self.login = RegisterBusiness(driver)
+# import HTMLTestRunner
+# import os
+# import time
+class FirstCase(unittest.TestCase):
+    def setUp(self):
+        self.driver = webdriver.Chrome()
+        self.driver.get("http://www.5itest.cn/register")
+        self.login = RegisterBusiness(self.driver)
+    def tearDown(self):
+        self.driver.close()
+        print("这个是case的后置条件")
+
     # 邮箱，用户名，密码，验证码，错误信息定位元素，错误提示信息
     def test_login_email_error(self):
+
         email_error = self.login.login_email_error("34", "111", "SS111", "test11")
         if email_error == True:
             print("注册成功，此条case执行失败")
@@ -42,16 +47,16 @@ class FirstCase(object):
             print("注册成功")
 
 # 实例化
-def main():
-    first = FirstCase
-    first.test_login_code_error()
-    first.test_login_email_error()
-    first.test_login_password_error()
-    first.test_login_username_error()
-    first.test_login_success()
+# def main():
+#     first = FirstCase
+#     first.test_login_code_error()
+#     first.test_login_email_error()
+#     first.test_login_password_error()
+#     first.test_login_username_error()
+#     first.test_login_success()
 
 if __name__ == "__main__":
-    main()
+    unittest.main()
 
 # class FirstCase(unittest.TestCase):
 #     @classmethod
