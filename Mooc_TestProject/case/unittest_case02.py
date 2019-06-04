@@ -1,14 +1,6 @@
 import unittest
-
-
 class FirstCase02(unittest.TestCase):
     @classmethod
-
-    '''
-    def setUpClass(self)也可
-    后续研究python
-    '''
-
     def setUpClass(cls):
         print("所有case执行之前的前置")
 
@@ -21,10 +13,6 @@ class FirstCase02(unittest.TestCase):
 
     def tearDown(self):
         print("这个是case的后置条件")
-
-    '''
-    用例的跳转选取
-    '''
 
     @unittest.skip("不执行第一条")
     def testfirst001(self):

@@ -40,9 +40,9 @@ class RegisterHandle(object):
         return text
 
     # 点击注册按钮
-    def click_register_button(self):
-        self.register_p.get_button_element().click()
+    # def click_register_button(self):
+    #     self.register_p.get_button_element().click()
 
-    # 获取注册按钮信息
-    def get_register_text(self):
-        return self.register_p.get_button_element().text
+    # 获取注册按钮文字
+    # def get_register_text(self):
+    #     return self.register_p.get_button_element().text

@@ -7,7 +7,7 @@ import unittest
 class FirstCase01(unittest.TestCase):
     # 装饰器
     @classmethod
-    def setUpClass(self):
+    def setUpClass(cls):
         print("所有case执行之前的前置")
 
     @classmethod
@@ -18,24 +18,26 @@ class FirstCase01(unittest.TestCase):
         print("这个是case的前置条件")
 
     def tearDown(self):
-        print("这个是case的后置条件")
-    # '''
-    # 用例的跳转选取
-    # '''
-    # @unittest.skip("不执行第一条")
+        print("这个是case的后置条件\n")
+
+    @unittest.skip("不执行第一条")
     def testfirst01(self):
         print("这个是第一条case")
+
     def testfirst02(self):
         print("这个是第二条case")
 
+    def testfirst03(self):
+        print("这个是第三条case")
+
 if __name__ == "__main__":
-    unittest.main()
-    # suite= unittest.TestSuite()
-    # '''
-    # 执行顺序按照testfirst添加顺序排序
-    # '''
-    # suite.addTest(FirstCase01("testfirst02"))
-    # suite.addTest(FirstCase01("testfirst01"))
-    # suite.addTest(FirstCase01("testfirst03"))
-    # unittest.TextTestRunner().run(suite)
+    # unittest.main()
+    suite = unittest.TestSuite()
+    '''
+    执行顺序按照testfirst添加顺序排序
+    '''
+    suite.addTest(FirstCase01("testfirst02"))
+    suite.addTest(FirstCase01("testfirst01"))
+    suite.addTest(FirstCase01("testfirst03"))
+    unittest.TextTestRunner().run(suite)
 

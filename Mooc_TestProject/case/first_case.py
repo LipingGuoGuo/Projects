@@ -15,7 +15,7 @@ class FirstCase(unittest.TestCase):
         self.login = RegisterBusiness(self.driver)
     def tearDown(self):
         self.driver.close()
-        print("这个是case的后置条件")
+        print("这个是case的后置条件\n")
 
     # 邮箱，用户名，密码，验证码，错误信息定位元素，错误提示信息
     def test_login_email_error(self):
@@ -41,10 +41,10 @@ class FirstCase(unittest.TestCase):
             print("注册成功，此条case执行失败")
 
 
-    def test_login_success(self):
-        success = self.login.user_base("34", "111", "SS111", "test11")
-        if self.login.register_success() == True:
-            print("注册成功")
+    # def test_login_success(self):
+    #     success = self.login.user_base("34", "111", "SS111", "test11")
+    #     if self.login.register_success() == True:
+    #         print("注册成功")
 
 # 实例化
 # def main():

@@ -12,14 +12,14 @@ class RegisterBusiness(object):
         self.register_h.send_user_name(name)
         self.register_h.send_user_password(password)
         self.register_h.send_user_code(code)
-        self.register_h.click_register_button()
-        self.register_h.get_register_text()
+        # self.register_h.click_register_button()
+        # self.register_h.get_register_text()
 
-    def register_success(self):
-        if self.register_h.get_register_text() == None:
-            return True
-        else:
-            return False
+    # def register_success(self):
+    #     if self.register_h.get_register_text() == None:
+    #         return True
+    #     else:
+    #         return False
     # 执行操作
     """
     正常操作不是全部执行完成，失去焦点获得判断即可
@@ -33,13 +33,13 @@ class RegisterBusiness(object):
         else:
             return False
 
-    # def register_function(self, email,username,password, code,assertCode, assertText):
-    #     self.user_base(email, username, password, code)
-    #     if self.register_h.get_user_text(assertCode,assertText) == None:
-    #         print("邮箱检验不成功")
-    #         return True
-    #     else:
-    #         return False
+    def register_function(self, email,username,password, code,assertCode, assertText):
+        self.user_base(email, username, password, code)
+        if self.register_h.get_user_text(assertCode,assertText) == None:
+            print("邮箱检验不成功")
+            return True
+        else:
+            return False
 
 
     # 用户名name错误
