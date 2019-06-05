@@ -13,11 +13,12 @@ class FindElement(object):
             if by == 'id':
                 return self.driver.find_element_by_id(value)
             elif by == 'name':
-                return self.driver.find_element_by_naem(value)
+                return self.driver.find_element_by_name(value)
             elif by == 'classname':
                 return self.driver.find_element_by_class_naem(value)
             else:
                 return self.driver.find_element_by_xpath(value)
         except:
+            self.driver.save_screenshot("F:\\Projects\\Projects\\Mooc_TestProject\\Image\\%s.png" % value)
             return None
 
