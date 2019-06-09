@@ -12,8 +12,8 @@ class ExcelUtil:
             index = 0
         self.data = xlrd.open_workbook(excel_path)
         self.table = self.data.sheets()[index]
-        # # 行数
-        # self.rows = self.table.nrows
+        # 行数
+        self.rows = self.table.nrows
         # [[],[]]
 
     # 获取excel数据，按照每行一个list,添加到一个大的list里面
@@ -37,15 +37,18 @@ class ExcelUtil:
 
     # 获取单元格的数据
     def get_col_value(self, row, col):
+        # data = self.table.cell(3,4).value
+        # return data
         if self.get_lines() > row:
             data = self.table.cell(4, 4).value
             return data
+        return None
 
-    # 判断行数
-    def has_next(self):
+    # # 判断行数
+    # def has_next(self):
 
     # 写入数据
-     def write_value(self, row, value):
+    def write_value(self, row, value):
         read_value = self.data
         write_data = copy(read_value)
         write_data.get_sheet(0).write(row, 7, value)
