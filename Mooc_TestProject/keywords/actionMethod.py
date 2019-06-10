@@ -34,8 +34,8 @@ class ActionMethod:
             element.send_keys(value)
 
     # 点击元素
-    def click_element(self,key):
-        self.get_element(key).click()
+    # def click_element(self,key):
+    #     self.get_element(key).click()
 
     # 等待
     def sleep_time(self):
