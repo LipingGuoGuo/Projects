@@ -32,11 +32,11 @@ class RegisterBusiness(object):
             return True
         else:
             return False
-
+    # 数据驱动
     def register_function(self, email,username,password, code,assertCode, assertText):
         self.user_base(email, username, password, code)
         if self.register_h.get_user_text(assertCode,assertText) == None:
-            print("邮箱检验不成功")
+            # print("邮箱检验不成功")
             return True
         else:
             return False

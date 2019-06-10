@@ -56,7 +56,7 @@ class FirstDdtCase(unittest.TestCase):
         # print(email_error)
         self.assertFalse(email_error, "测试失败")
 
-if __name__ == "__main__":
+if __name__ == "first_ddt_data":
     # file_path = os.path.join(os.getcwd() + "/report/" + "first_case1.html")
     # f = open(file_path, "wb")
     # suite = unittest.TestLoader().loadTestsFromTestCase(FirstDdtCase)
