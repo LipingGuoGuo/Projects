@@ -8,10 +8,19 @@ import unittest
 import HTMLTestRunner
 import os
 import time
+from log.user_log import UserLog
+
+
 class FirstCase(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.log = UserLog()
+        cls.logger = cls.log.get_log()
+
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.get("http://www.5itest.cn/register")
+        self.logger.info("this is Chrome")
         self.login = RegisterBusiness(self.driver)
     def tearDown(self):
         time.sleep(2)
@@ -28,6 +37,11 @@ class FirstCase(unittest.TestCase):
         self.driver.close()
         # print("这个是case的后置条件\n")
         # self.driver.save_screenshot()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.log.close_handle()
+
 
     # 邮箱，用户名，密码，验证码，错误信息定位元素，错误提示信息
     def test_login_email_error(self):
