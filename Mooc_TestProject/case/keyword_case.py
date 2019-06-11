@@ -22,7 +22,6 @@ class KeywordCase:
         case_lines = handle_excel.get_lines()
         if case_lines:
             for i in range(1,case_lines):
-                handle_excel.write_value(i, "test")
                 is_run = handle_excel.get_col_value(i, 3)
                 print(is_run)
                 if is_run == "yes":
@@ -61,17 +60,17 @@ class KeywordCase:
 
 
     def run_method(self,method,send_value='',handle_value=''):
-        method_value = getattr(self.action_method, method)
-        if send_value == '' and handle_value != '':
-            result = method_value(handle_value)
-        elif send_value == '' and handle_value == '':
-            result = method_value()
-        elif send_value != '' and handle_value == '':
+        method_value = getattr(self.action_method,method)
+        print(method)
+        if method == 'get_url':
             result = method_value(send_value)
-        else:
+        elif method == "element_send_keys":
             result = method_value(send_value,handle_value)
+        # elif method == "click_element":
+        #     result = method_value(handle_value)
+        else:
+            result = method_value()
         return result
-
 
 if __name__ == "__main__":
     test = KeywordCase()
