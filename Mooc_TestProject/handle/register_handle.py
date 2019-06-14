@@ -30,7 +30,7 @@ class RegisterHandle(object):
             if info == "user_mail_error":
                 text = self.register_p.get_email_error_element().text
             elif info == "user_name_error":
-                text = self.register_p.get_email_error_element().text
+                text = self.register_p.get_name_error_element().text
             elif info == "password_error":
                 text = self.register_p.get_password_error_element().text
             else:
