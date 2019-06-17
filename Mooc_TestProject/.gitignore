@@ -1,0 +1,12 @@
+.idea
+/case/_trial_temp
+/case/_trial_temp.lock
+/case/__pycache__
+/handle/__pycache__
+/keywords/__pycache__
+/log/__pycache__
+/Mooc_selenium/__pycache__
+/page/__pycache__
+/util/__pycache__
+/base/__pycache__
+/business/__pycache__
