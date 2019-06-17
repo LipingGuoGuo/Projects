@@ -15,7 +15,7 @@ class FindElement(object):
             elif by == 'name':
                 return self.driver.find_element_by_name(value)
             elif by == 'classname':
-                return self.driver.find_element_by_class_naem(value)
+                return self.driver.find_element_by_class_name(value)
             else:
                 return self.driver.find_element_by_xpath(value)
         except:
