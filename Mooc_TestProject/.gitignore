@@ -1,5 +1,7 @@
 .idea
 /case/_trial_temp
+/case/_trial_temp-1
+/case/_trial_temp-1.lock
 /case/_trial_temp.lock
 /case/__pycache__
 /handle/__pycache__
