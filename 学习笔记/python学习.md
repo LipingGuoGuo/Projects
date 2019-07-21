@@ -132,3 +132,34 @@ deque([1, 2])
 ####### 1.4查找最大或最小的N个元素
 > 堆数据结构重要特征是最小的或者最大的在堆顶 
 
+###　字典中的键映射多个值
+#### 可以使用`collections`模块中的`default`构造字典，特征是自动初始化每个key开始对应的值
+```
+# defaultdict会自动为将要访问的键（即使当前不存在）创建映射实体
+from collections import defaultdict
+
+d = defaultdict(list)
+d['a'].append(1)
+d['a'].append(2)
+d['b'].append(4)
+
+d = defaultdict(set)
+d['a'].add(1)
+d['a'].add(2)
+d['b'].add(4)
+
+```
+### 创建一个多值映射字典
+```
+# 方法一
+d = {}
+for key, value in pairs:
+    if key not in d:
+        d[key] = []
+    d[key].append(value)
+ # 方法二   
+d = defaultdict(list)
+for key, value in pairs:
+    d[key].append(value)
+
+```
