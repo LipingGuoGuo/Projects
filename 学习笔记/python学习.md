@@ -163,3 +163,6 @@ for key, value in pairs:
     d[key].append(value)
 
 ```
+### 关于zip
+### shell 通配符
+> 
